@@ -1,1 +1,4 @@
-User-agent: *\nAllow: /\nSitemap: https://somsoo.github.io/housing-score-calc/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://housing-score-calc.enjoy-onepage.com/sitemap.xml
