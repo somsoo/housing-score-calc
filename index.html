@@ -4,113 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아파트 청약 가점 계산기</title>
-    <meta name="description" content="신혼부부 및 무주택자를 위한 아파트 청약 가점(84점 만점) 초스피드 계산기입니다.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        body { font-family: 'Pretendard', sans-serif; background-color: #f3f4f6; color: #1f2937; }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.2); }
-        .receipt { background: #fff; border: 1px dashed #d1d5db; border-radius: 0.5rem; padding: 1.5rem; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .receipt::before, .receipt::after { content: ''; position: absolute; top: -10px; width: 20px; height: 20px; background: #f3f4f6; border-radius: 50%; }
-        .receipt::before { left: -10px; } .receipt::after { right: -10px; }
-        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; transition: all 0.2s; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .receipt { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-10 px-4">
-    <!-- Header -->
-    <div class="w-full max-w-2xl text-center mb-8">
-        <h1 class="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">아파트 청약 가점 계산기</h1>
-        <p class="text-gray-500 font-medium">신혼부부 및 무주택자를 위한 아파트 청약 가점(84점 만점) 초스피드 계산기입니다.</p>
-    </div>
-
-    <!-- Top AdSense -->
-    <div class="w-full max-w-2xl mb-8 bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!-- Main Logic Container -->
-    <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
+<body class="flex flex-col items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 mb-6">
+        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2">아파트 청약 가점 계산기</h1>
+        <p class="text-center text-gray-600 mb-8">신혼부부 및 무주택자를 위한 아파트 청약 가점(84점 만점) 초스피드 계산기입니다.</p>
         
-<div class="flex flex-col gap-4">
-    <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">무주택 기간 (만점 32점)</label>
-        <select id="noHome" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
-            <option value="2">1년 미만 (2점)</option>
-            <option value="10">4년 이상 ~ 5년 미만 (10점)</option>
-            <option value="20">9년 이상 ~ 10년 미만 (20점)</option>
-            <option value="32" selected>15년 이상 (32점)</option>
-        </select>
+        <!-- LOGIC START -->
+        <p class='text-red-500 font-bold text-center'>허용된 모든 모델 한도 초과. 잠시 후 다시 시도해주세요.</p>
+        <!-- LOGIC END -->
+        
     </div>
-    <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">부양 가족수 (만점 35점)</label>
-        <select id="family" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
-            <option value="5">0명 (5점)</option>
-            <option value="10">1명 (10점)</option>
-            <option value="20">3명 (20점)</option>
-            <option value="35">6명 이상 (35점)</option>
-        </select>
-    </div>
-    <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">청약통장 가입기간 (만점 17점)</label>
-        <select id="bank" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
-            <option value="2">1년 미만 (2점)</option>
-            <option value="8">6년 이상 ~ 7년 미만 (8점)</option>
-            <option value="17" selected>15년 이상 (17점)</option>
-        </select>
-    </div>
-    <button onclick="calcHousing()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">총점 확인</button>
-</div>
-<div class="receipt mt-8">
-    <h3 class="text-xl font-extrabold text-center mb-4">청약 가점 결과</h3>
-    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>무주택</span><span id="resNoHome">32 점</span></div>
-    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>부양가족</span><span id="resFamily">5 점</span></div>
-    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>가입기간</span><span id="resBank">17 점</span></div>
-    <div class="flex justify-between pt-2 mt-4 text-indigo-700 font-extrabold text-2xl bg-indigo-50 p-4 rounded-lg"><span>내 청약 총점</span><span id="resTotal">54 / 84 점</span></div>
-</div>
-<script>
-function calcHousing() {
-    let n = parseInt(document.getElementById('noHome').value);
-    let f = parseInt(document.getElementById('family').value);
-    let b = parseInt(document.getElementById('bank').value);
-    document.getElementById('resNoHome').innerText = n + " 점";
-    document.getElementById('resFamily').innerText = f + " 점";
-    document.getElementById('resBank').innerText = b + " 점";
-    document.getElementById('resTotal').innerText = (n+f+b) + " / 84 점";
-}
-calcHousing();
-</script>
-
-    </div>
-
-    <!-- Share & Ads -->
-    <div class="w-full max-w-2xl flex flex-col gap-4 mb-10">
-        <button onclick="shareApp()" class="w-full bg-[#fee500] text-[#191919] font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#f4dc00] transition shadow-sm">
-            <i class="fas fa-share-nodes"></i> 카카오톡 및 SNS 공유하기
-        </button>
-        <a href="#" class="w-full bg-[#ff3131] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#e62c2c] transition shadow-sm">
-            <i class="fas fa-shopping-bag"></i> 쿠팡 특별 기획전 바로가기
-        </a>
-    </div>
-
-    <!-- Bottom AdSense -->
-    <div class="w-full max-w-2xl bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    
+    <!-- Google AdSense -->
+    <div class="w-full max-w-md bg-white/50 rounded-lg p-2 text-center text-xs text-gray-500 mb-6">
+        <span>광고</span>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <script>
-        function shareApp() {
-            if (navigator.share) {
-                navigator.share({ title: '아파트 청약 가점 계산기', text: '신혼부부 및 무주택자를 위한 아파트 청약 가점(84점 만점) 초스피드 계산기입니다.', url: window.location.href });
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("링크가 복사되었습니다!");
-            }
-        }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+    
+    <!-- Web Share API Button -->
+    <button onclick="if(navigator.share) navigator.share({title: '아파트 청약 가점 계산기', url: window.location.href})" class="w-full max-w-md bg-gray-800 text-white font-bold py-4 rounded-full shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2">
+        공유하기
+    </button>
 </body>
 </html>
