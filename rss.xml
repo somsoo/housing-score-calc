@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출</title>
+    <link>https://housing-score-calc.enjoy-onepage.com/</link>
+    <description>청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다.</description>
+    <language>ko-KR</language>
+    <lastBuildDate>Sat, 12 Sep 2026 03:00:00 +0900</lastBuildDate>
+    <atom:link href="https://housing-score-calc.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/</guid>
+      <description>청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다.</description>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>서비스 소개 및 산출 기준 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/about.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/about.html</guid>
+      <description>아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출의 서비스 소개, 공식 법령 산출 수식 및 데이터 처리 원칙 안내입니다.</description>
+      <pubDate>Sat, 12 Sep 2026 01:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>개인정보처리방침 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/privacy.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/privacy.html</guid>
+      <description>아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출의 개인정보 보호 정책, 쿠키 사용 및 브라우저 로컬 데이터 보안 원칙입니다.</description>
+      <pubDate>Sat, 12 Sep 2026 01:10:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>청약 가점 부양가족 인정 기준 및 감점 주의사항 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/guides/dependent-family-rules.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/guides/dependent-family-rules.html</guid>
+      <description>부모님 직계존속 3년 동거 요건, 주택 소유 여부, 자녀 분리세대 등 오인하기 쉬운 감점 요소를 정리했습니다.</description>
+      <pubDate>Sat, 12 Sep 2026 02:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>청약가점 완벽 해결 실무 가이드 및 핵심 요령 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/guides/guide1.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/guides/guide1.html</guid>
+      <description>청약가점에 관한 법령 및 공식 산정 기준은 공공기관 훈령과 최신 개정 규정에 따르며, 개별 상황에 따라 적용 요율과 한도가 달라질 수 ...</description>
+      <pubDate>Sat, 12 Sep 2026 02:15:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>청약가점 기준 주의사항 및 2026년 최신 개정 기준 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/guides/guide2.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/guides/guide2.html</guid>
+      <description>청약가점 기준 관련 분쟁 예방을 위해서는 서면 합의서 및 공식 명세서를 보관하고, 모의 계산기를 통해 예상 결과를 교차 검증하는 절차가...</description>
+      <pubDate>Sat, 12 Sep 2026 02:30:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>수도권 인기 분양 단지 청약 가점 합격선 분석 | 아파트 주택청약 가점 계산기</title>
+      <link>https://housing-score-calc.enjoy-onepage.com/guides/homeread-score-strategy.html</link>
+      <guid isPermaLink="true">https://housing-score-calc.enjoy-onepage.com/guides/homeread-score-strategy.html</guid>
+      <description>최근 서울 및 수도권 주요 청약 단지의 타입별 가점 커트라인 통계와 당첨 가능 점수대를 비교합니다.</description>
+      <pubDate>Sat, 12 Sep 2026 02:45:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>
