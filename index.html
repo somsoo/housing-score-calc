@@ -81,216 +81,186 @@
         </script>
     </div>
 
-    <div class="glass-card w-full max-w-md p-5 mb-6">
-        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2">아파트 청약 가점 계산기</h1>
-        <p class="text-center text-gray-600 mb-8">신혼부부 및 무주택자를 위한 아파트 청약 가점(84점 만점) 초스피드 계산기입니다.</p>
-        
-        <!-- LOGIC START -->
-        <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-<style>
-    .font-sans-kr { font-family: 'Noto Sans KR', sans-serif; }
-    .font-mono-tech { font-family: 'Share Tech Mono', monospace; }
-    
-    /* 영수증 스타일 커스텀 */
-    .receipt {
-        background: #fdfdfd;
-        background-image: radial-gradient(circle at 100% 150%, #fdfdfd 24%, #f5f5f5 25%, #f5f5f5 28%, #fdfdfd 29%);
-        border: 2px solid #e2e8f0;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        position: relative;
-    }
-    
-    /* 영수증 하단 톱니바퀴 효과 */
-    .receipt::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        background: linear-gradient(-45deg, transparent 4px, #fdfdfd 4px), linear-gradient(45deg, transparent 4px, #fdfdfd 4px);
-        background-size: 12px 12px;
-        background-repeat: repeat-x;
-    }
-
-    /* 토글 스위치 커스텀 */
-    .toggle-checkbox:checked {
-        right: 0;
-        border-color: #4f46e5;
-    }
-    .toggle-checkbox:checked + .toggle-label {
-        background-color: #4f46e5;
-    }
-</style>
-
-<div class="font-sans-kr w-full bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
-    <div class="w-full bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-        
-        <!-- 헤더 영역 -->
-        <div class="bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 px-8 py-10 text-white text-center relative overflow-hidden">
-            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-10 rounded-full blur-xl"></div>
-            <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-purple-300 opacity-10 rounded-full blur-xl"></div>
-            
-            <span class="bg-indigo-500/50 text-indigo-100 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Homeless & Newlyweds Guide</span>
-            <h1 class="text-3xl font-extrabold mt-3 tracking-tight">청약 가점 계산기</h1>
-            <p class="text-indigo-200 text-sm mt-2 font-light">신혼부부 및 무주택자를 위한 84점 만점 초스피드 계산</p>
+    <div class="glass-card w-full max-w-5xl p-3.5 sm:p-6 mb-8">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+            <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Homeless & Newlyweds Guide</span>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">아파트 청약 가점 계산기</h1>
+            <p class="text-slate-500 text-sm sm:text-base mt-2">무주택 기간·부양가족 수·청약통장 가입기간을 입력하여 84점 만점 기준 청약 가점을 초스피드로 산출하세요.</p>
         </div>
-
-        <!-- 메인 폼 영역 -->
-        <div class="p-5 space-y-8">
+        
+        <!-- 2-COLUMN RESPONSIVE GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             
-            <!-- 1. 무주택 기간 -->
-            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-4">
-                <div class="flex justify-between items-center">
-                    <label class="block text-slate-800 text-lg font-bold">1. 무주택 기간</label>
-                    <span id="score-homeless-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">0점</span>
-                </div>
-                <p class="text-xs text-slate-500 -mt-2 leading-relaxed">💡 만 30세 미만 미혼자는 0점이며, 주택 소유 이력이 있는 경우 처분일로부터 산정됩니다.</p>
+            <!-- LEFT COLUMN: INPUT FORM (7 COLS) -->
+            <div class="lg:col-span-7 space-y-5">
                 
-                <!-- 주택 소유 여부 토글 -->
-                <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-slate-200">
-                    <span class="text-sm font-medium text-slate-700">현재 주택을 소유하고 계십니까?</span>
-                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="has_house" id="has_house" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 appearance-none cursor-pointer transition-all duration-300 right-6"/>
-                        <label for="has_house" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 cursor-pointer transition-all duration-300"></label>
+                <!-- 1. 무주택 기간 -->
+                <div class="bg-white/80 p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-slate-800 text-base sm:text-lg font-bold">1. 무주택 기간</label>
+                        <span id="score-homeless-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">0점</span>
+                    </div>
+                    <p class="text-xs text-slate-500 -mt-1 leading-relaxed">💡 만 30세 미만 미혼자는 0점이며, 주택 소유 이력이 있는 경우 처분일로부터 산정됩니다.</p>
+                    
+                    <!-- 주택 소유 여부 토글 -->
+                    <div class="flex items-center justify-between p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                        <span class="text-sm font-medium text-slate-700">현재 주택을 소유하고 계십니까?</span>
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="has_house" id="has_house" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 appearance-none cursor-pointer transition-all duration-300 right-6"/>
+                            <label for="has_house" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 cursor-pointer transition-all duration-300"></label>
+                        </div>
+                    </div>
+
+                    <div id="homeless-period-container" class="space-y-1.5">
+                        <label class="block text-xs font-semibold text-slate-600">무주택 기간 선택</label>
+                        <select id="homeless_period" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800 font-medium transition-all text-sm">
+                            <option value="0">만 30세 미만 미혼자 또는 주택 소유 (0점)</option>
+                            <option value="2">1년 미만 (2점)</option>
+                            <option value="4">1년 이상 ~ 2년 미만 (4점)</option>
+                            <option value="6">2년 이상 ~ 3년 미만 (6점)</option>
+                            <option value="8">3년 이상 ~ 4년 미만 (8점)</option>
+                            <option value="10">4년 이상 ~ 5년 미만 (10점)</option>
+                            <option value="12">5년 이상 ~ 6년 미만 (12점)</option>
+                            <option value="14">6년 이상 ~ 7년 미만 (14점)</option>
+                            <option value="16">7년 이상 ~ 8년 미만 (16점)</option>
+                            <option value="18">8년 이상 ~ 9년 미만 (18점)</option>
+                            <option value="20">9년 이상 ~ 10년 미만 (20점)</option>
+                            <option value="22">10년 이상 ~ 11년 미만 (22점)</option>
+                            <option value="24">11년 이상 ~ 12년 미만 (24점)</option>
+                            <option value="26">12년 이상 ~ 13년 미만 (26점)</option>
+                            <option value="28">13년 이상 ~ 14년 미만 (28점)</option>
+                            <option value="30">14년 이상 ~ 15년 미만 (30점)</option>
+                            <option value="32">15년 이상 무주택 (32점)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div id="homeless-period-container" class="space-y-2">
-                    <label class="block text-sm font-medium text-slate-600">무주택 기간 선택</label>
-                    <select id="homeless_period" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800 font-medium transition-all">
-                        <option value="0">만 30세 미만 미혼자 또는 주택 소유 (0점)</option>
-                        <option value="2">1년 미만 (2점)</option>
-                        <option value="4">1년 이상 ~ 2년 미만 (4점)</option>
-                        <option value="6">2년 이상 ~ 3년 미만 (6점)</option>
-                        <option value="8">3년 이상 ~ 4년 미만 (8점)</option>
-                        <option value="10">4년 이상 ~ 5년 미만 (10점)</option>
-                        <option value="12">5년 이상 ~ 6년 미만 (12점)</option>
-                        <option value="14">6년 이상 ~ 7년 미만 (14점)</option>
-                        <option value="16">7년 이상 ~ 8년 미만 (16점)</option>
-                        <option value="18">8년 이상 ~ 9년 미만 (18점)</option>
-                        <option value="20">9년 이상 ~ 10년 미만 (20점)</option>
-                        <option value="22">10년 이상 ~ 11년 미만 (22점)</option>
-                        <option value="24">11년 이상 ~ 12년 미만 (24점)</option>
-                        <option value="26">12년 이상 ~ 13년 미만 (26점)</option>
-                        <option value="28">13년 이상 ~ 14년 미만 (28점)</option>
-                        <option value="30">14년 이상 ~ 15년 미만 (30점)</option>
-                        <option value="32">15년 이상 무주택 (32점)</option>
+                <!-- 2. 부양가족 수 -->
+                <div class="bg-white/80 p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-slate-800 text-base sm:text-lg font-bold">2. 부양가족 수</label>
+                        <span id="score-dependents-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">5점</span>
+                    </div>
+                    <p class="text-xs text-slate-500 -mt-1 leading-relaxed">💡 본인을 제외한 주민등록등본상 직계존·비속 기준입니다.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-2">배우자 유무</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button type="button" onclick="setSpouse(true)" id="spouse_yes" class="spouse-btn py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all text-sm">있음</button>
+                                <button type="button" onclick="setSpouse(false)" id="spouse_no" class="spouse-btn py-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all text-sm">없음</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-2">기타 부양가족 (자녀, 부모 등)</label>
+                            <div class="flex items-center space-x-3 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 justify-between">
+                                <button type="button" onclick="changeDependents(-1)" class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center font-bold text-slate-600 hover:bg-slate-200 transition-all">-</button>
+                                <span id="dependent_count" class="text-base font-bold text-slate-800">0명</span>
+                                <button type="button" onclick="changeDependents(1)" class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center font-bold text-slate-600 hover:bg-slate-200 transition-all">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 입주자 저축 가입기간 -->
+                <div class="bg-white/80 p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-slate-800 text-base sm:text-lg font-bold">3. 청약통장 가입기간</label>
+                        <span id="score-bankbook-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">1점</span>
+                    </div>
+                    <p class="text-xs text-slate-500 -mt-1 leading-relaxed">💡 청약 예·적금, 주택청약종합저축 가입 후 경과 기간입니다.</p>
+
+                    <select id="bankbook_period" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800 font-medium transition-all text-sm">
+                        <option value="1">6개월 미만 (1점)</option>
+                        <option value="2">6개월 이상 ~ 1년 미만 (2점)</option>
+                        <option value="3">1년 이상 ~ 2년 미만 (3점)</option>
+                        <option value="4">2년 이상 ~ 3년 미만 (4점)</option>
+                        <option value="5">3년 이상 ~ 4년 미만 (5점)</option>
+                        <option value="6">4년 이상 ~ 5년 미만 (6점)</option>
+                        <option value="7">5년 이상 ~ 6년 미만 (7점)</option>
+                        <option value="8">6년 이상 ~ 7년 미만 (8점)</option>
+                        <option value="9">7년 이상 ~ 8년 미만 (9점)</option>
+                        <option value="10">8년 이상 ~ 9년 미만 (10점)</option>
+                        <option value="11">9년 이상 ~ 10년 미만 (11점)</option>
+                        <option value="12">10년 이상 ~ 11년 미만 (12점)</option>
+                        <option value="13">11년 이상 ~ 12년 미만 (13점)</option>
+                        <option value="14">12년 이상 ~ 13년 미만 (14점)</option>
+                        <option value="15">13년 이상 ~ 14년 미만 (15점)</option>
+                        <option value="16">14년 이상 ~ 15년 미만 (16점)</option>
+                        <option value="17">15년 이상 (17점)</option>
                     </select>
                 </div>
             </div>
 
-            <!-- 2. 부양가족 수 -->
-            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-4">
-                <div class="flex justify-between items-center">
-                    <label class="block text-slate-800 text-lg font-bold">2. 부양가족 수</label>
-                    <span id="score-dependents-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">5점</span>
-                </div>
-                <p class="text-xs text-slate-500 -mt-2 leading-relaxed">💡 청약 신청자 본인을 제외한 주민등록등본상 등재된 직계존·비속 기준입니다.</p>
+            <!-- RIGHT COLUMN: RECEIPT & ANALYSIS (5 COLS, STICKY ON PC) -->
+            <div class="lg:col-span-5 space-y-4 lg:sticky lg:top-6">
+                <!-- 영수증 결과 영역 (Receipt) -->
+                <div class="receipt p-5 text-slate-800 rounded-2xl bg-white shadow-lg border border-slate-200">
+                    <!-- 영수증 헤더 -->
+                    <div class="text-center border-b-2 border-dashed border-slate-200 pb-4">
+                        <span class="font-mono-tech text-xs tracking-widest text-slate-400">RECEIPT ID: #APT-2024-REG</span>
+                        <h2 class="text-xl font-bold tracking-tight text-slate-800 mt-1">청약 점수 분석 영수증</h2>
+                        <p id="receipt-date" class="text-[11px] text-slate-400 font-mono-tech mt-0.5">DATE: </p>
+                    </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-2">배우자 유무</label>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button type="button" onclick="setSpouse(true)" id="spouse_yes" class="spouse-btn py-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all">있음</button>
-                            <button type="button" onclick="setSpouse(false)" id="spouse_no" class="spouse-btn py-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all">없음</button>
+                    <!-- 영수증 디테일 테이블 -->
+                    <div class="py-4 space-y-3 text-sm font-medium border-b-2 border-dashed border-slate-200">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500">1. 무주택 기간</span>
+                            <span id="receipt-homeless" class="font-mono-tech text-base font-bold text-slate-700">0 / 32 pts</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500">2. 부양가족 수 (<span id="receipt-total-deps-count">0</span>명)</span>
+                            <span id="receipt-dependents" class="font-mono-tech text-base font-bold text-slate-700">5 / 35 pts</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-500">3. 청약통장 가입기간</span>
+                            <span id="receipt-bankbook" class="font-mono-tech text-base font-bold text-slate-700">1 / 17 pts</span>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-600 mb-2">기타 부양가족 (자녀, 부모 등)</label>
-                        <div class="flex items-center space-x-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 justify-between">
-                            <button type="button" onclick="changeDependents(-1)" class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-200 transition-all">-</button>
-                            <span id="dependent_count" class="text-lg font-bold text-slate-800">0명</span>
-                            <button type="button" onclick="changeDependents(1)" class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-200 transition-all">+</button>
+
+                    <!-- 최종 스코어 판넬 -->
+                    <div class="py-5 text-center bg-indigo-50/70 rounded-xl my-4 border border-indigo-100">
+                        <p class="text-xs text-indigo-600 font-bold tracking-wider uppercase">최종 청약 가점</p>
+                        <div class="flex justify-center items-baseline space-x-2 mt-1">
+                            <span id="receipt-total-score" class="text-5xl font-black text-indigo-700 font-mono-tech transition-all duration-300">6</span>
+                            <span class="text-slate-400 text-lg font-bold">/ 84 점</span>
                         </div>
+                        <p id="evaluation-text" class="text-xs text-slate-600 mt-2 font-semibold">당첨권 안정을 위해 분발이 필요합니다.</p>
                     </div>
+
+                    <!-- 결과 복사 버튼 -->
+                    <button onclick="copyHousingResult()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm mb-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        📋 청약 가점 결과 복사하기
+                    </button>
+
+                    <!-- 바코드 시뮬레이션 -->
+                    <div class="flex flex-col items-center pt-2 justify-center">
+                        <div class="w-4/5 h-8 bg-slate-900" style="mask-image: repeating-linear-gradient(to right, black 0px, black 2px, transparent 2px, transparent 6px, black 6px, black 7px, transparent 7px, transparent 10px); -webkit-mask-image: repeating-linear-gradient(to right, black 0px, black 2px, transparent 2px, transparent 6px, black 6px, black 7px, transparent 7px, transparent 10px);"></div>
+                        <p class="text-[10px] text-slate-400 tracking-[0.4em] font-mono-tech mt-1.5">APT-SCORE-SYSTEM-V1.0</p>
+                    </div>
+                </div>
+
+                <!-- 신혼부부 가이드 팁 -->
+                <div class="bg-indigo-50/80 p-4 rounded-xl border border-indigo-100 text-xs text-indigo-900 leading-relaxed shadow-sm">
+                    <span class="font-bold text-indigo-700 block mb-1">💡 신혼부부 특공 Tip!</span>
+                    일반 가점제 외에도 '신혼부부 특별공급' 시에는 소득 요건 및 자녀 수가 절대적으로 중요합니다. 가점 산정 외에 우선 공급 대상 여부도 별도로 체크해 보세요!
+                </div>
+
+                <!-- 가이드북 바로가기 링크 박스 -->
+                <div class="p-4 bg-white/70 rounded-xl border border-slate-200 text-center">
+                    <p class="text-xs text-slate-600 font-medium mb-2">청약 점수별 당첨 전략이 궁금하신가요?</p>
+                    <a href="guides/guide1.html" class="inline-block w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-lg transition text-center">
+                        📖 청약 가점 만점 가이드북 읽어보기
+                    </a>
                 </div>
             </div>
-
-            <!-- 3. 입주자 저축 가입기간 -->
-            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-4">
-                <div class="flex justify-between items-center">
-                    <label class="block text-slate-800 text-lg font-bold">3. 청약통장 가입기간</label>
-                    <span id="score-bankbook-badge" class="bg-indigo-100 text-indigo-700 text-sm font-bold px-3 py-1 rounded-lg">1점</span>
-                </div>
-                <p class="text-xs text-slate-500 -mt-2 leading-relaxed">💡 청약 예·적금, 주택청약종합저축 가입 후 경과 기간입니다.</p>
-
-                <select id="bankbook_period" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800 font-medium transition-all">
-                    <option value="1">6개월 미만 (1점)</option>
-                    <option value="2">6개월 이상 ~ 1년 미만 (2점)</option>
-                    <option value="3">1년 이상 ~ 2년 미만 (3점)</option>
-                    <option value="4">2년 이상 ~ 3년 미만 (4점)</option>
-                    <option value="5">3년 이상 ~ 4년 미만 (5점)</option>
-                    <option value="6">4년 이상 ~ 5년 미만 (6점)</option>
-                    <option value="7">5년 이상 ~ 6년 미만 (7점)</option>
-                    <option value="8">6년 이상 ~ 7년 미만 (8점)</option>
-                    <option value="9">7년 이상 ~ 8년 미만 (9점)</option>
-                    <option value="10">8년 이상 ~ 9년 미만 (10점)</option>
-                    <option value="11">9년 이상 ~ 10년 미만 (11점)</option>
-                    <option value="12">10년 이상 ~ 11년 미만 (12점)</option>
-                    <option value="13">11년 이상 ~ 12년 미만 (13점)</option>
-                    <option value="14">12년 이상 ~ 13년 미만 (14점)</option>
-                    <option value="15">13년 이상 ~ 14년 미만 (15점)</option>
-                    <option value="16">14년 이상 ~ 15년 미만 (16점)</option>
-                    <option value="17">15년 이상 (17점)</option>
-                </select>
-            </div>
-
-            <!-- 영수증 결과 영역 (Receipt) -->
-            <div class="receipt mt-8 p-4 text-slate-800 rounded-xl">
-                <!-- 영수증 헤더 -->
-                <div class="text-center border-b-2 border-dashed border-slate-200 pb-4">
-                    <span class="font-mono-tech text-xs tracking-widest text-slate-400">RECEIPT ID: #APT-2024-REG</span>
-                    <h2 class="text-xl font-bold tracking-tight text-slate-800 mt-1">청약 점수 분석 영수증</h2>
-                    <p id="receipt-date" class="text-[10px] text-slate-400 font-mono-tech mt-0.5">DATE: </p>
-                </div>
-
-                <!-- 영수증 디테일 테이블 -->
-                <div class="py-4 space-y-3 text-sm font-medium border-b-2 border-dashed border-slate-200">
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">1. 무주택 기간 항목</span>
-                        <span id="receipt-homeless" class="font-mono-tech text-base font-bold">0 / 32 pts</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">2. 부양가족 수 (총 <span id="receipt-total-deps-count">0</span>명)</span>
-                        <span id="receipt-dependents" class="font-mono-tech text-base font-bold">5 / 35 pts</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500">3. 청약통장 가입기간</span>
-                        <span id="receipt-bankbook" class="font-mono-tech text-base font-bold">1 / 17 pts</span>
-                    </div>
-                </div>
-
-                <!-- 최종 스코어 판넬 -->
-                <div class="py-6 text-center bg-indigo-50/50 rounded-xl my-4 border border-indigo-100">
-                    <p class="text-xs text-indigo-500 font-bold tracking-wider uppercase">최종 청약 가점</p>
-                    <div class="flex justify-center items-baseline space-x-2 mt-1">
-                        <span id="receipt-total-score" class="text-5xl font-black text-indigo-700 font-mono-tech transition-all duration-300">6</span>
-                        <span class="text-slate-400 text-lg font-bold">/ 84 점</span>
-                    </div>
-                    <p id="evaluation-text" class="text-xs text-slate-600 mt-2 font-semibold">당첨권 안정을 위해 분발이 필요합니다.</p>
-                </div>
-
-                <!-- 바코드 시뮬레이션 -->
-                <div class="flex flex-col items-center pt-4 justify-center">
-                    <div class="w-4/5 h-10 bg-slate-900" style="mask-image: repeating-linear-gradient(to right, black 0px, black 2px, transparent 2px, transparent 6px, black 6px, black 7px, transparent 7px, transparent 10px); -webkit-mask-image: repeating-linear-gradient(to right, black 0px, black 2px, transparent 2px, transparent 6px, black 6px, black 7px, transparent 7px, transparent 10px);"></div>
-                    <p class="text-[10px] text-slate-400 tracking-[0.4em] font-mono-tech mt-2">APT-SCORE-SYSTEM-V1.0</p>
-                </div>
-            </div>
-
-            <!-- 신혼부부 가이드 팁 -->
-            <div class="bg-indigo-50/70 p-4 rounded-xl border border-indigo-100 text-xs text-indigo-900 leading-relaxed">
-                <span class="font-bold text-indigo-700 block mb-1">💡 신혼부부 특공 Tip!</span>
-                일반 가점제 외에도 '신혼부부 특별공급' 시에는 소득 요건 및 자녀 수가 절대적으로 중요합니다. 가점 산정 외에 우선 공급 대상 여부도 별도로 체크해 보세요!
-            </div>
-            
         </div>
     </div>
-</div>
 
-<script>
+    <!-- JS LOGIC -->
+    <script>
     // State관리
     let hasSpouse = false;
     let extraDependents = 0;
@@ -320,16 +290,17 @@
 
     // 현재 날짜 설정
     const today = new Date();
-    receiptDate.innerText = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
+    if (receiptDate) {
+        receiptDate.innerText = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
+    }
 
     // 이벤트 리스너 설정
-    hasHouseCheckbox.addEventListener('change', handleHouseToggle);
-    homelessPeriodSelect.addEventListener('change', updateAll);
-    bankbookPeriodSelect.addEventListener('change', updateAll);
+    if (hasHouseCheckbox) hasHouseCheckbox.addEventListener('change', handleHouseToggle);
+    if (homelessPeriodSelect) homelessPeriodSelect.addEventListener('change', updateAll);
+    if (bankbookPeriodSelect) bankbookPeriodSelect.addEventListener('change', updateAll);
 
     function handleHouseToggle() {
         if (hasHouseCheckbox.checked) {
-            // 유주택자인 경우 드롭다운을 0점처리 및 숨김/비활성화 처리
             homelessPeriodSelect.value = "0";
             homelessPeriodSelect.disabled = true;
             homelessPeriodContainer.classList.add('opacity-50');
@@ -343,11 +314,11 @@
     function setSpouse(val) {
         hasSpouse = val;
         if (val) {
-            spouseYesBtn.className = "spouse-btn py-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all";
-            spouseNoBtn.className = "spouse-btn py-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all";
+            spouseYesBtn.className = "spouse-btn py-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all text-sm";
+            spouseNoBtn.className = "spouse-btn py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all text-sm";
         } else {
-            spouseYesBtn.className = "spouse-btn py-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all";
-            spouseNoBtn.className = "spouse-btn py-3 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all";
+            spouseYesBtn.className = "spouse-btn py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-medium hover:border-indigo-500 transition-all text-sm";
+            spouseNoBtn.className = "spouse-btn py-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 font-bold transition-all text-sm";
         }
         updateAll();
     }
@@ -368,84 +339,67 @@
         if (!hasHouseCheckbox.checked) {
             homelessScore = parseInt(homelessPeriodSelect.value) || 0;
         }
+        scoreHomelessBadge.innerText = `${homelessScore}점`;
+        receiptHomeless.innerText = `${homelessScore} / 32 pts`;
 
-        // 2. 부양가족 수 점수 산출 (최대 6명, 35점)
-        let totalDependentsCount = (hasSpouse ? 1 : 0) + extraDependents;
-        let dependentsScore = 5; // 기본 0명일 때 5점
-        if (totalDependentsCount > 0) {
-            dependentsScore = 5 + (totalDependentsCount * 5);
-        }
-        if (dependentsScore > 35) dependentsScore = 35; // 상한선 방어
+        // 2. 부양가족 수 점수 산출
+        let totalDeps = (hasSpouse ? 1 : 0) + extraDependents;
+        let depScore = 5 + (totalDeps * 5);
+        if (depScore > 35) depScore = 35;
+        
+        scoreDependentsBadge.innerText = `${depScore}점`;
+        receiptTotalDepsCount.innerText = totalDeps;
+        receiptDependents.innerText = `${depScore} / 35 pts`;
 
         // 3. 청약통장 가입기간 점수 산출
-        let bankbookScore = parseInt(bankbookPeriodSelect.value) || 1;
+        let bankScore = parseInt(bankbookPeriodSelect.value) || 1;
+        scoreBankbookBadge.innerText = `${bankScore}점`;
+        receiptBankbook.innerText = `${bankScore} / 17 pts`;
 
-        // 최종 합산
-        let totalScore = homelessScore + dependentsScore + bankbookScore;
-
-        // 배지 UI 업데이트
-        scoreHomelessBadge.innerText = `${homelessScore}점`;
-        scoreDependentsBadge.innerText = `${dependentsScore}점`;
-        scoreBankbookBadge.innerText = `${bankbookScore}점`;
-
-        // 영수증 데이터 주입
-        receiptHomeless.innerText = `${homelessScore} / 32 pts`;
-        receiptTotalDepsCount.innerText = totalDependentsCount;
-        receiptDependents.innerText = `${dependentsScore} / 35 pts`;
-        receiptBankbook.innerText = `${bankbookScore} / 17 pts`;
+        // 총점 합산
+        let totalScore = homelessScore + depScore + bankScore;
         receiptTotalScore.innerText = totalScore;
 
-        // 점수별 평가 문구 제공
-        if (totalScore >= 65) {
-            evaluationText.innerText = "🎉 안정적인 최고 수준 가점입니다! 서울/수도권 핵심지 당첨권!";
-            evaluationText.className = "text-xs text-emerald-600 mt-2 font-semibold";
-        } else if (totalScore >= 50) {
-            evaluationText.innerText = "👍 훌륭한 수준입니다. 인기 단지 특별/일반공급 노려볼 수 있어요!";
-            evaluationText.className = "text-xs text-indigo-600 mt-2 font-semibold";
-        } else if (totalScore >= 30) {
-            evaluationText.innerText = "✍️ 무난한 가점입니다. 틈새 평형이나 비규제 지역 위주로 공략해 보세요.";
+        // 총평 업데이트
+        if (totalScore >= 70) {
+            evaluationText.innerText = "🏆 최상위 가점! 서울 및 주요 인기 단지 당첨권입니다.";
+            evaluationText.className = "text-xs text-emerald-600 mt-2 font-bold";
+        } else if (totalScore >= 55) {
+            evaluationText.innerText = "✨ 수도권 유망 단지 및 인기 타입 추첨/가점 당첨권입니다.";
+            evaluationText.className = "text-xs text-indigo-600 mt-2 font-bold";
+        } else if (totalScore >= 40) {
+            evaluationText.innerText = "📈 신혼부부 특공 또는 수도권 외곽 비규제 단지를 공략하세요.";
             evaluationText.className = "text-xs text-amber-600 mt-2 font-semibold";
         } else {
-            evaluationText.innerText = "💡 가점제보다는 특별공급이나 추첨제 비율이 높은 단지를 전략적으로 노리세요!";
-            evaluationText.className = "text-xs text-slate-500 mt-2 font-semibold";
+            evaluationText.innerText = "💡 가점제보다는 특별공급이나 추첨제(85㎡ 초과)를 추천합니다.";
+            evaluationText.className = "text-xs text-slate-600 mt-2 font-semibold";
         }
+    }
+
+    function copyHousingResult() {
+        const score = receiptTotalScore ? receiptTotalScore.innerText : '0';
+        const hScore = receiptHomeless ? receiptHomeless.innerText : '';
+        const dScore = receiptDependents ? receiptDependents.innerText : '';
+        const bScore = receiptBankbook ? receiptBankbook.innerText : '';
+        const evalTxt = evaluationText ? evaluationText.innerText : '';
+
+        const text = `[아파트 청약 가점 분석 결과]\n총점: ${score}점 / 84점 만점\n- 무주택 기간: ${hScore}\n- 부양가족: ${dScore}\n- 청약통장: ${bScore}\n평가: ${evalTxt}\n\n👉 내 청약 가점 확인하기: ${window.location.href}`;
+        navigator.clipboard.writeText(text).then(() => {
+            if (typeof showToastNotification === 'function') {
+                showToastNotification('청약 가점 결과가 복사되었습니다!');
+            } else {
+                alert('청약 가점 결과가 복사되었습니다!');
+            }
+        }).catch(() => {
+            alert('복사되었습니다: ' + window.location.href);
+        });
     }
 
     // 초기 실행
     updateAll();
-</script>
-        <!-- LOGIC END -->
-        
-    </div>
-    
-    <!-- Google AdSense -->
-    <div class="manual-ad-box" style="width: 100%; min-height: 100px; margin-top: 20px; margin-bottom: 24px; overflow: hidden; background: #fff; text-align: center; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 10px; box-sizing: border-box;">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-    
-    <!-- Web Share API Button -->
-    <button onclick="if(navigator.share) navigator.share({title: '아파트 청약 가점 계산기', url: window.location.href})" class="w-full max-w-md bg-gray-800 text-white font-bold py-4 rounded-full shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2 mb-8">
-        공유하기
-    </button>
+    </script>
 
-    <!-- Footer -->
-        <!-- 중간 반응형 배너 (In-Result Slot) -->
-    <div class="manual-ad-box ad-mid-banner" style="width: 100%; max-width: 960px; margin: 24px auto; overflow: hidden; text-align: center;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2228289204702106"
-             data-ad-slot="3824727725"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-<footer class="w-full max-w-md text-center pb-8 text-sm text-gray-700/80">
+    <footer class="w-full max-w-4xl text-center pb-8 text-sm text-gray-700/80">
         <div class="flex justify-center items-center gap-4 mb-3">
             <a href="terms.html" class="hover:text-gray-900 transition font-medium">이용약관</a>
             <span class="text-gray-400 text-xs">|</span>
