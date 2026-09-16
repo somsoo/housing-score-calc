@@ -35,25 +35,58 @@
 <meta content="https://housing-score-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수 산출",
-        "alternateName": "청약가점계산기",
-        "url": "https://housing-score-calc.enjoy-onepage.com/",
-        "description": "청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "inLanguage": "ko",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "KRW"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://housing-score-calc.enjoy-onepage.com/#webapp",
+      "name": "아파트 청약 가점 계산기",
+      "url": "https://housing-score-calc.enjoy-onepage.com/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다.",
+      "image": "https://housing-score-calc.enjoy-onepage.com/og-image.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
       }
-    ]
-    </script>
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://housing-score-calc.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "분양권이나 입주권을 소유한 적이 있는데 무주택인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2018년 12월 이후 취득한 분양권은 주택을 소유한 것으로 간주되어 기존 무주택기간이 모두 리셋(0점)됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "부양가족 수를 늘리기 위해 부모님을 세대원으로 올리면 즉시 점수가 오르나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "직계존속은 청약 신청자와 동일한 주민등록표에 '연속 3년 이상' 등재되어 있어야만 1인당 5점의 부양가족 점수가 인정됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "청약 당첨 후 포기하면 어떤 불이익이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "분양가상한제 적용 주택 등에 당첨된 경우 최장 10년간 재당첨 제한 규정이 적용되며, 사용한 청약통장은 재사용이 불가능해 해지해야 합니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
         body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
