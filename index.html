@@ -367,7 +367,7 @@
     // 현재 날짜 설정
     const today = new Date();
     if (receiptDate) {
-        receiptDate.innerText = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
+        receiptDate.textContent = `DATE: ${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')} ${String(today.getHours()).padStart(2, '0')}:${String(today.getMinutes()).padStart(2, '0')}`;
     }
 
     // 이벤트 리스너 설정
@@ -403,7 +403,7 @@
         let newCount = extraDependents + amount;
         if (newCount >= 0 && newCount <= 6) {
             extraDependents = newCount;
-            dependentCountSpan.innerText = `${extraDependents}명`;
+            dependentCountSpan.textContent = `${extraDependents}명`;
             updateAll();
         }
     }
@@ -413,41 +413,41 @@
         // 1. 무주택 기간 점수 산출
         let homelessScore = 0;
         if (!hasHouseCheckbox.checked) {
-            homelessScore = parseInt(homelessPeriodSelect.value) || 0;
+            homelessScore = Math.max(0, parseInt(homelessPeriodSelect.value) || 0);
         }
-        scoreHomelessBadge.innerText = `${homelessScore}점`;
-        receiptHomeless.innerText = `${homelessScore} / 32 pts`;
+        scoreHomelessBadge.textContent = `${homelessScore}점`;
+        receiptHomeless.textContent = `${homelessScore} / 32 pts`;
 
         // 2. 부양가족 수 점수 산출
         let totalDeps = (hasSpouse ? 1 : 0) + extraDependents;
         let depScore = 5 + (totalDeps * 5);
         if (depScore > 35) depScore = 35;
         
-        scoreDependentsBadge.innerText = `${depScore}점`;
-        receiptTotalDepsCount.innerText = totalDeps;
-        receiptDependents.innerText = `${depScore} / 35 pts`;
+        scoreDependentsBadge.textContent = `${depScore}점`;
+        receiptTotalDepsCount.textContent = totalDeps;
+        receiptDependents.textContent = `${depScore} / 35 pts`;
 
         // 3. 청약통장 가입기간 점수 산출
         let bankScore = parseInt(bankbookPeriodSelect.value) || 1;
-        scoreBankbookBadge.innerText = `${bankScore}점`;
-        receiptBankbook.innerText = `${bankScore} / 17 pts`;
+        scoreBankbookBadge.textContent = `${bankScore}점`;
+        receiptBankbook.textContent = `${bankScore} / 17 pts`;
 
         // 총점 합산
         let totalScore = homelessScore + depScore + bankScore;
-        receiptTotalScore.innerText = totalScore;
+        receiptTotalScore.textContent = totalScore;
 
         // 총평 업데이트
         if (totalScore >= 70) {
-            evaluationText.innerText = "🏆 최상위 가점! 서울 및 주요 인기 단지 당첨권입니다.";
+            evaluationText.textContent = "🏆 최상위 가점! 서울 및 주요 인기 단지 당첨권입니다.";
             evaluationText.className = "text-xs text-emerald-600 mt-2 font-bold";
         } else if (totalScore >= 55) {
-            evaluationText.innerText = "✨ 수도권 유망 단지 및 인기 타입 추첨/가점 당첨권입니다.";
+            evaluationText.textContent = "✨ 수도권 유망 단지 및 인기 타입 추첨/가점 당첨권입니다.";
             evaluationText.className = "text-xs text-indigo-600 mt-2 font-bold";
         } else if (totalScore >= 40) {
-            evaluationText.innerText = "📈 신혼부부 특공 또는 수도권 외곽 비규제 단지를 공략하세요.";
+            evaluationText.textContent = "📈 신혼부부 특공 또는 수도권 외곽 비규제 단지를 공략하세요.";
             evaluationText.className = "text-xs text-amber-600 mt-2 font-semibold";
         } else {
-            evaluationText.innerText = "💡 가점제보다는 특별공급이나 추첨제(85㎡ 초과)를 추천합니다.";
+            evaluationText.textContent = "💡 가점제보다는 특별공급이나 추첨제(85㎡ 초과)를 추천합니다.";
             evaluationText.className = "text-xs text-slate-600 mt-2 font-semibold";
         }
     }
