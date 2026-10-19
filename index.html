@@ -10,7 +10,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <title>신혼부부·생애최초 특별공급 &amp; 청약 가점 진단기</title>
-<meta content="2026 청약홈 기준 무주택 기간, 부양가족, 청약통장 점수와 함께 신혼부부 및 생애최초 특별공급 소득·자격 요건을 종합 분석하여." name="description"/>
+<meta content="무주택기간·부양가족·청약통장 점수와 신혼부부·생애최초 특공 자격을 분석합니다." name="description"/>
 <meta content="신혼부부 특별공급, 생애최초 청약, 아파트 특공 자격, 청약 가점 계산기, 특별공급 소득기준, 청약홈 모의계산" name="keywords"/>
 <link href="https://housing-score-calc.enjoy-onepage.com/" rel="canonical"/>
 <!-- 파비콘 & PWA 매니페스트 -->
@@ -25,8 +25,8 @@
 <!-- 오픈그래프 (OpenGraph) 메타 태그 -->
 <meta content="website" property="og:type"/>
 <meta content="청약가점계산기" property="og:site_name"/>
-<meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." property="og:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다." property="og:description"/>
+<meta content="신혼부부·생애최초 특별공급 &amp; 청약 가점 진단기" property="og:title"/>
+<meta content="무주택기간·부양가족·청약통장 점수와 신혼부부·생애최초 특공 자격을 분석합니다." property="og:description"/>
 <meta content="https://housing-score-calc.enjoy-onepage.com/" property="og:url"/>
 <meta content="https://housing-score-calc.enjoy-onepage.com/og-image.png" property="og:image"/>
 <meta content="800" property="og:image:width"/>
@@ -34,8 +34,8 @@
 <meta content="ko_KR" property="og:locale"/>
 <!-- 트위터 카드 (Twitter Card) -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="아파트 주택청약 가점 계산기 | 무주택기간·부양가족·통장가입기간 점수.." name="twitter:title"/>
-<meta content="청약홈 공식 기준에 맞춰 무주택 기간(최대 32점), 부양가족 수(최대 35점), 청약통장 가입기간(최대 17점)을 반영한 총 84점 만점 청약 가점을 완벽 모의 계산합니다." name="twitter:description"/>
+<meta content="신혼부부·생애최초 특별공급 &amp; 청약 가점 진단기" name="twitter:title"/>
+<meta content="무주택기간·부양가족·청약통장 점수와 신혼부부·생애최초 특공 자격을 분석합니다." name="twitter:description"/>
 <meta content="https://housing-score-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
@@ -453,11 +453,11 @@
     }
 
     function copyHousingResult() {
-        const score = receiptTotalScore ? receiptTotalScore.innerText : '0';
-        const hScore = receiptHomeless ? receiptHomeless.innerText : '';
-        const dScore = receiptDependents ? receiptDependents.innerText : '';
-        const bScore = receiptBankbook ? receiptBankbook.innerText : '';
-        const evalTxt = evaluationText ? evaluationText.innerText : '';
+        const score = receiptTotalScore ? receiptTotalScore.textContent : '0';
+        const hScore = receiptHomeless ? receiptHomeless.textContent : '';
+        const dScore = receiptDependents ? receiptDependents.textContent : '';
+        const bScore = receiptBankbook ? receiptBankbook.textContent : '';
+        const evalTxt = evaluationText ? evaluationText.textContent : '';
 
         const text = `[아파트 청약 가점 분석 결과]\n총점: ${score}점 / 84점 만점\n- 무주택 기간: ${hScore}\n- 부양가족: ${dScore}\n- 청약통장: ${bScore}\n평가: ${evalTxt}\n\n👉 내 청약 가점 확인하기: ${window.location.href}`;
         navigator.clipboard.writeText(text).then(() => {
