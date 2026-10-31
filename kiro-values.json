@@ -1,0 +1,17 @@
+{
+ "app": "housing-score-calc",
+ "host": "housing-score-calc.enjoy-onepage.com",
+ "watch": false,
+ "status": "unverified",
+ "checked": "",
+ "soft_days": 60,
+ "hard_days": 120,
+ "grace_days": 31,
+ "hide": [],
+ "pages": [
+  "index.html",
+  "subscription-score-table.html"
+ ],
+ "values": {},
+ "sources": {}
+}
